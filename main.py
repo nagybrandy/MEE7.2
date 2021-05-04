@@ -12,7 +12,13 @@ async def on_ready():
   print("I'm in")
   print(client.user)
 
-
+@client.event
+async def on_message(message):
+  if message.author!=client.user:
+      if message.content=="ping":
+        await message.channel.send("pong")
+      else:
+        await message.channel.send(message.content[::-1])
 
 """@client.command
 async def help(ctx, command=None):
